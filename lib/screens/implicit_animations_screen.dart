@@ -29,18 +29,22 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AnimatedContainer(
-              // curve: Curves.bounceIn,
-              curve: Curves.elasticInOut,
-              duration: const Duration(seconds: 2),
-              width: size.width * 0.8,
-              height: size.width * 0.8,
-              transform: Matrix4.rotationZ(_visible ? 3.14 / 4 : 0),
-              transformAlignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: _visible ? Colors.red : Colors.amber,
-                borderRadius: BorderRadius.circular(_visible ? 100 : 0),
+            TweenAnimationBuilder(
+              // 애니메이션의 시작 값, 끝 값을 정의
+              tween: ColorTween(
+                begin: Colors.yellow,
+                end: Colors.red,
               ),
+              curve: Curves.bounceInOut,
+              duration: const Duration(seconds: 5),
+              builder: (context, value, child) {
+                // return Text("$value");
+                return Image.network(
+                  'https://res.cloudinary.com/dnegavcrl/images/f_auto,q_auto/v1678438365/Flutter-Dash-Sticer/Flutter-Dash-Sticer.png?_i=AA',
+                  color: value,
+                  colorBlendMode: BlendMode.colorBurn,
+                );
+              },
             ),
             const SizedBox(height: 50),
             ElevatedButton(
