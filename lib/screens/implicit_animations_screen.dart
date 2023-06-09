@@ -19,7 +19,7 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
